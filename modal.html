@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <style>
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        button{
+            all : unset;
+            background-color: steelblue;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal{
+            /* 모달 css 정보는 https://codepen.io/sdthornton/pen/wBZdXq 여기참고하면 됨 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            /* 모달창 크기 100% 만들기 위한 설정 => 스크린에 꽉채운거. */
+            position: fixed;  
+            top : 0;
+            left : 0;
+            width: 100%;
+            height : 100%;
+            display: flex;   
+            justify-content: center;    
+            align-items: center;   
+        }
+        /* 모달창 뜨면서 뒤에 오버레이 배경준거. 모달창하고 같이 끌어옴. */
+        .modal__overlay{
+            background-color: rgba(0,0,0,0.6);
+            width: 100%;
+            height : 100%;
+            position: absolute;
+        }
+    
+        .modal__contnent{
+            background-color: white;
+            padding: 50px 100px;
+            text-align: center;
+            position: relative;
+            width : 10%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            border-radius: 15px;
+        }
+    
+        h1{
+            margin: 0;
+        }
+
+        .hidden{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="open">모달창열기</button>
+    <!-- 위에 버튼누르면 뜨는 화면만들기 -->
+    <div class="modal hidden">
+            <div class="modal__overlay"></div>
+            <!-- 취소화면 -->
+            <div class="modal__contnent">
+                <h1>I'm a modal</h1>
+                <button id="cancle">❌</button>
+            </div>
+    </div>
+    <script>
+        const openBtn = document.querySelector("#open");
+        const modal = document.querySelector(".modal");
+        const cancleBtn = modal.querySelector("#cancle");
+
+        function openModal(){
+            modal.classList.remove("hidden");
+        }
+
+        const closeModal = () => {
+            modal.classList.add("hidden");
+        }
+
+        openBtn.addEventListener("click",openModal);
+        cancleBtn.addEventListener("click", closeModal);
+
+    </script>
+</body>
+</html>
